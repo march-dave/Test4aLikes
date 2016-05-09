@@ -27,6 +27,14 @@
           <label>etc</label>
           <input type="text" class="form-control" required ng-model='user.etc'>
         </div>
+        <div class="form-group" ng-if='currentState === "register"'>
+          <label>like</label>
+          <input type="text" class="form-control" required ng-model='user.like'>
+        </div>
+        <div class="form-group" ng-if='currentState === "register"'>
+          <label>count</label>
+          <input type="text" class="form-control" required ng-model='user.count'>
+        </div>
         <button class="btn btn-primary">{{currentState | titlecase }}</button>
     </form>
   </div>
