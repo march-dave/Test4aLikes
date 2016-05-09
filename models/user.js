@@ -56,10 +56,57 @@ userSchema.statics.register = function(userObj, cb) {
         password: hash,
         image: userObj.image,
         biography: userObj.biography,
-        etc: userObj.etc
+        etc: userObj.etc,
+        like:userObj.like,
+        count:userObj.count
       });
       user.save(cb);
     });
+  });
+  // this.create(userObj, cb);
+};
+
+
+userSchema.statics.profileUpdate = function(userObj, cb) {
+
+  // console.log('req.body:', userObj);
+
+  // console.log('userObj.username : ', userObj.username);
+  // console.log('userObj._id : ', userObj._id);
+
+  User.findOne({username: userObj.username}, (err, dbUser) => {
+
+    if(err) return res.status(400).send(err);
+
+    // userObj.like = 'yes';
+    // console.log('userObj', userObj);
+    // dbuser.like = userObj.like;
+    // dbuser.count = userObj.count;
+    // console.log('userObj.username', userObj.username);
+    dbUser.like = 'yess';
+    // console.log('dbUser', dbUser);
+
+    dbUser.save();
+
+    // dbUser.save((err, savedClient) => {
+    //   res.status(err ? 400 : 200).send(err || savedClient);
+    // });
+
+    // User.save(userObj);
+
+    // dbUser.save(userObj);
+
+      // var user = new User({
+      //   username: userObj.username,
+      //   password: hash,
+      //   image: userObj.image,
+      //   biography: userObj.biography,
+      //   etc: userObj.etc,
+      //   like:userObj.like,
+      //   count:userObj.count
+      // });
+      // user.save(cb);
+    // });
   });
   // this.create(userObj, cb);
 };

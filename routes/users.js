@@ -35,4 +35,23 @@ router.get('/profile', User.isLoggedIn, (req, res) => {
   res.send(req.user);
 })
 
+// /api/users/profile
+// router.put('/profile', User.isLoggedIn, (req, res) => {
+router.put('/profile', (req, res) => {
+
+  // console.log('put profile: req' , req.body);
+  // console.log('put profile: res' , res);
+
+  User.profileUpdate(req.body, err => {
+
+    // console.log('req.body1111: ', req.body);
+    // console.log('req: ', req);
+
+
+    res.status(err ? 400 : 200).send(err);
+  });
+
+})
+
+
 module.exports = router;
