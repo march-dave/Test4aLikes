@@ -2,13 +2,13 @@
 
 var app = angular.module('test4aLikesApp', ['ui.router']);
 
-app.run(function(MybookService) {
-  MybookService.getProfile();
+app.run(function(Test4aLikesService) {
+  Test4aLikesService.getProfile();
 });
 
 var resolveObj = {
-  profile: function(MybookService, $q, $state) {
-    return MybookService.getProfile()
+  profile: function(Test4aLikesService, $q, $state) {
+    return Test4aLikesService.getProfile()
     .catch(() => {
       $state.go('home');
       return $q.reject();

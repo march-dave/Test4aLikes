@@ -7,23 +7,23 @@ app.controller('homeCtrl', function($scope, $q, $http) {
   // $scope.clients = clientDex;
 });
 
-app.controller('mainCtrl', function($scope, $state, MybookService) {
+app.controller('mainCtrl', function($scope, $state, Test4aLikesService) {
 
   $scope.$watch(function() {
-    return MybookService.currentUser;
+    return Test4aLikesService.currentUser;
   }, function(newVal, oldVal) {
     $scope.currentUser = newVal;
   });
 
   $scope.logout = () => {
-    MybookService.logout()
+    Test4aLikesService.logout()
       .then(res => {
         $state.go('home');
       })
   }
 });
 
-app.controller('authFormCtrl', function($scope, $state, MybookService) {
+app.controller('authFormCtrl', function($scope, $state, Test4aLikesService) {
 
   $scope.currentState = $state.current.name;
 
@@ -38,9 +38,9 @@ app.controller('authFormCtrl', function($scope, $state, MybookService) {
 
         alert('Passwords must match.')
       } else {
-        MybookService.register($scope.user)
+        Test4aLikesService.register($scope.user)
           .then(res => {
-            return MybookService.login($scope.user);
+            return Test4aLikesService.login($scope.user);
           })
           .then(res => {
             $state.go('home');
@@ -50,7 +50,7 @@ app.controller('authFormCtrl', function($scope, $state, MybookService) {
           });
       }
     } else {
-      MybookService.login($scope.user)
+      Test4aLikesService.login($scope.user)
         .then(res => {
           $state.go('home');
         })
@@ -59,10 +59,18 @@ app.controller('authFormCtrl', function($scope, $state, MybookService) {
         })
     }
   };
-
 });
 
 app.controller('profileCtrl', function($scope, $state, $q, $http) {
-    var t = $state.params.user;
-    // console.log('t: ', t);
+    // var t = $state.params.user;
+
+    $scope.likes = function() {
+      console.log('like clicked', $scope.clicklikes);
+    }
+    $scope.dislikes = function() {
+      console.log('like clicked', $scope.clickdislikes);
+    }
+
+
+
 });

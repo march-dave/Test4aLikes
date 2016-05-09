@@ -2,7 +2,7 @@
 
 var app = angular.module('test4aLikesApp');
 
-app.service('MybookService', function($http, $q) {
+app.service('Test4aLikesService', function($http, $q) {
 
   this.register = function(user) {
      return $http.post(`/api/users/register/`, user);
@@ -31,4 +31,20 @@ app.service('MybookService', function($http, $q) {
         return $q.reject(res.data);
     });
   };
+
+
+  this.setProfile = () => {
+   return $http.set('/api/users/profile')
+    .then(res => {
+        this.currentUser = res.data;
+        return $q.resolve(res.data);
+    })
+    .catch(res => {
+        this.currentUser = null;
+        return $q.reject(res.data);
+    });
+  };
+
+
+
 });
