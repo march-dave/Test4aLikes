@@ -18,7 +18,8 @@ var userSchema = new mongoose.Schema({
   image: { type: String, required: true },
   biography: { type: String, required: true },
   etc: { type: String, required: true },
-  like: { type: String }
+  like: { type: String },
+  count: { type: Number }
 });
 
 // IT'S MIDDLEWARE!!

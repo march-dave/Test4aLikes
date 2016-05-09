@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -8,8 +10,12 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 const MONGOURL = process.env.MONGODB_URI || 'mongodb://localhost/Test4aLikes';
-// var routes = require('./routes/index');
-// var users = require('./routes/users');
+
+mongoose.connect(MONGOURL, err => {
+  console.log(err || `MongoDB connected to ${MONGOURL}`)
+});
+
+
 
 var app = express();
 
